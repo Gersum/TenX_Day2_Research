@@ -29,6 +29,7 @@
     - [x] **Plan**: [research/specs/data_models.md](research/specs/data_models.md) + [research/architecture_strategy.md](research/architecture_strategy.md).
     - [x] **Tasks**: [research/specs/tasks.md](research/specs/tasks.md) generated.
     - [x] **Infrastructure**: [research/specs/infrastructure.md](research/specs/infrastructure.md) added for "Swarm-Ready" reliability.
+- **MCP Enhancement**: Added `sqlite`, `puppeteer`, `filesystem`, `memory`, and `brave-search` to `.vscode/mcp.json` to provide agents with necessary tools for the "Builder" phase.
 - **Next Step**: Day 1 wrap-up. Start Day 2: The Builder (Implementation).
 
 ---

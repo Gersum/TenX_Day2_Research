@@ -3,6 +3,46 @@
 		"tenxfeedbackanalytics": {
 			"url": "https://mcppulse.10academy.org/proxy",
 			"type": "http"
+		},
+		"sqlite": {
+			"command": "uvx",
+			"args": [
+				"mcp-server-sqlite",
+				"--db-path",
+				"./research/chimera.db"
+			]
+		},
+		"puppeteer": {
+			"command": "npx",
+			"args": [
+				"-y",
+				"@modelcontextprotocol/server-puppeteer"
+			]
+		},
+		"filesystem": {
+			"command": "npx",
+			"args": [
+				"-y",
+				"@modelcontextprotocol/server-filesystem",
+				"/Users/gersumasfaw/Projects/TenX_Day2_Research"
+			]
+		},
+		"memory": {
+			"command": "npx",
+			"args": [
+				"-y",
+				"@modelcontextprotocol/server-memory"
+			]
+		},
+		"brave-search": {
+			"command": "npx",
+			"args": [
+				"-y",
+				"@modelcontextprotocol/server-brave-search"
+			],
+			"env": {
+				"BRAVE_API_KEY": "YOUR_API_KEY_HERE"
+			}
 		}
 	},
 	"inputs": []
