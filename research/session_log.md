@@ -28,7 +28,8 @@
     - [x] **Specify**: [research/specs/core_interfaces.md](research/specs/core_interfaces.md) defines contracts.
     - [x] **Plan**: [research/specs/data_models.md](research/specs/data_models.md) + [research/architecture_strategy.md](research/architecture_strategy.md).
     - [x] **Tasks**: [research/specs/tasks.md](research/specs/tasks.md) generated.
-- **Next Step**: Ratify these specifications before moving to Implementation (Task 3).
+    - [x] **Infrastructure**: [research/specs/infrastructure.md](research/specs/infrastructure.md) added for "Swarm-Ready" reliability.
+- **Next Step**: Day 1 wrap-up. Start Day 2: The Builder (Implementation).
 
 ---
 
