@@ -12,21 +12,31 @@ This document consolidates the findings from Deep Research (Task 1.1), Architect
 
 ### Task 1.1: Deep Research & Reading
 
-#### Market Analysis & Context
-Our research focused on "The Trillion Dollar AI Code Stack" (a16z), "OpenClaw," and "MoltBook," synthesized with the Project Chimera SRS.
+#### 1. The Trillion Dollar AI Code Stack (a16z)
+*   **Core Thesis**: AI is not just a tool but a new economic engine ($3T GDP impact) shifting software development from "typing code" to "managed code factories."
+*   **The "Agentic Factory" Model**: The article describes a shift from "Copilot" (Human writes, AI checks) to "Agent" (AI writes, Human checks). This "Plan -> Code -> Review" loop validates our decision to use the **FastRender Swarm** (Planner -> Worker -> Judge).
+*   **Relevance to Chimera**: We are essentially building this "Code Factory" but applied to Content Creation. Instead of code, our agents ship "Influence."
 
-**1. Project Chimera & The "Agent Social Network" (OpenClaw)**
-*   **The Fit**: Chimera acts as the "Producer/Studio" node in the Agent Social Network. While OpenClaw provides the connectivity layer (like TCP/IP for agents), Chimera manages the *fleets* of high-value agents (Influencers).
-*   **Integration Point**: Chimera agents expose an MCP Server interface that promotes their "Service" (e.g., "I can review tech products") to the OpenClaw network. Other agents (e.g., from MoltBook) discover these capabilities via OpenClaw's registry.
-*   **Socio-Economic Role**: In the a16z stack, Chimera agents are the "Application Layer" workers. They consume "Infrastructure" (OpenClaw) to find collaborators and "Commerce" (AgentKit) to get paid.
+#### 2. OpenClaw & The Agent Social Network
+*   **The "TCP/IP" of Agents**: OpenClaw acts as the connectivity layer that allows disparate agents to discover each other. It solves the "Lonely Agent" problem.
+*   **MoltBook Analysis**: A live demonstration of agent-to-agent social behavior.
+    *   **Submolts**: Topic-specific clusters (e.g., `r/tech`) that Chimera agents can monitor for trend detection.
+    *   **Emergent Behavior**: We observed agents forming "alliances" and engaging in debate. This validates the need for a "Social Protocol" in Chimera agents to navigate these spaces without getting "canceled" or flagged as spam.
+*   **Chimera's Role**: Chimera acts as the "Producer/Studio" node. We don't build the network (like OpenClaw); we build the *stars* that populate it.
 
-**2. Social Protocols for Agent Communication**
-We identified three critical protocols required for non-human interaction:
-*   **Identity Protocol**: Agents must verify they are not hallucinations/bots-gone-rogue. *Protocol:* Cryptographic signatures on every message using the Coinbase AgentKit wallet address.
-*   **Exchange Protocol**: Standardized MCP Resource schemas for content collaboration.
-    *   `proposal/v1`: JSON schema for proposing a collab.
-    *   `review/v1`: JSON schema for critiquing content.
-*   **Reputation Logic**: Trust is established via on-chain history (successful payments via AgentKit) and "social proofs" (MoltBook upvotes). Our agents need a local Weaviate index of "Trusted Peers" to filter out spam from the open network.
+#### 3. Agentic Commerce (Coinbase AgentKit + SRS)
+*   **The Missing Link**: Agents typically cannot transact. The SRS mandates **Coinbase AgentKit** to give agents crypto wallets (Base/USDC).
+*   **Economic Physics**: This turns "Context" into "Commerce." An agent can now:
+    *   Buy API keys (Pay for tools).
+    *   Bounty hunt (Get paid for reviews).
+    *   Hold assets (NFT identity).
+*   **Constraint**: Wallets must be "Budget-Gated" to prevent infinite loops draining funds.
+
+#### 4. Social Protocols for Agent Communication
+We identified three critical protocols required for safe non-human interaction:
+*   **Identity Protocol**: How do we know an agent is real? *Solution:* Cryptographic signatures on every message using the AgentKit wallet.
+*   **Exchange Protocol**: Standardized MCP Resource schemas (`proposal/v1`, `review/v1`) to allow agents to "negotiate" collabs.
+*   **Reputation Logic**: Trust is established via on-chain history. A local Weaviate index of "Trusted Peers" is essential to filter out low-quality interactions from the broader OpenClaw network.
 
 ---
 
