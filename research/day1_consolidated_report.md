@@ -42,30 +42,21 @@ We identified three critical protocols required for safe non-human interaction:
 
 ### Task 1.2: Domain Architecture Strategy
 
-#### Top-Level Topology: FastRender Swarm
-We selected the **FastRender Swarm** pattern to ensure high concurrency and self-healing properties.
+#### 1. Agent Pattern Decision: FastRender Swarm
+*   **The Problem with Chains**: Standard "Chain-of-Thought" (Step A -> Step B -> Step C) differs from reality. If Step B fails (e.g., API timeout), the whole chain dies. It is brittle and slow (sequential).
+*   **The Swarm Solution**: We chose the **FastRender Swarm** pattern because it decouples "Planning" from "Execution."
+    *   **Orchestrator (Planner)**: Decomposes a goal ("Grow my Twitter") into 50 tiny tasks.
+    *   **Workers**: Execute these 50 tasks in *parallel* (Async). If one worker fails, the task goes back to the queue, and another worker picks it up.
+    *   **Why?**: This provides **resilience** (no single point of failure) and **velocity** (doing 50 things at once vs 1 by 1). It aligns with the SRS requirement for a self-healing system.
 
-```mermaid
-graph TD
-    User((Orchestrator)) -->|Goal| Planner[Planner Agent]
-    Planner -->|Decomposed Tasks| TaskQ[(Redis Task Queue)]
-    TaskQ -->|Pop| Worker1[Worker Agent 1]
-    TaskQ -->|Pop| Worker2[Worker Agent 2]
-    Worker1 -->|Result| ReviewQ[(Redis Review Queue)]
-    Worker2 -->|Result| ReviewQ
-    ReviewQ -->|Pop| Judge[Judge Agent]
-    Judge -->|Confidence > 0.7| DB[(PostgreSQL + Weaviate)]
-    Judge -->|Confidence < 0.7| TaskQ
-    Judge -->|Critical Failure| HITL((Human Escalation))
-```
+#### 2. Infrastructure Decision: Hybrid Topology (Queues + Vectors)
+*   **Decision**: We rejected a "Single Database" approach in favor of specialized stores.
+    *   **Why Redis (The Nervous System)**: We need sub-millisecond management of the Task Queue. SQL is too slow for high-frequency agent "thought loops."
+    *   **Why Weaviate (The Brain)**: Agents need "Long-Term Memory" to remember who they are (Persona) and who they trust (Reputation). Vector DBs allow this fuzzy search.
+    *   **Why PostgreSQL (The Ledger)**: Finance (AgentKit balances) must be ACID compliant. We cannot "hallucinate" money.
+*   **Orchestration**: We chose standard **Python + Docker** over proprietary agent frameworks to avoid vendor lock-in.
 
-#### Requirement Decisions
-
-**1. Agent Pattern Strategy**
-*   **Decision**: **Hierarchical Swarm** (FastRender) over Sequential Chain.
-*   **Rationale**: Sequential chains (A -> B -> C) are brittle; if step B fails, the whole chain halts. A Swarm pattern enables parallel execution (e.g., researching 5 distinct trends simultaneously) and redundancy (if Worker 1 crashes, the task remains in the queue for Worker 2). This aligns with the "Self-Healing" requirement in the SRS.
-
-**2. Human-in-the-Loop (HITL) Strategy**
+#### 3. Human-in-the-Loop (HITL) Strategy
 *   **Decision**: **Confidence-Gated Escalation**.
 *   **Location**: The **Judge** agent acts as the gatekeeper.
 *   **Logic**:
