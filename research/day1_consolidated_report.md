@@ -101,3 +101,6 @@ We have established a robust, "Swarm-Ready" environment where Intent (Specs) is 
 Day 1 "The Strategist" is complete. The foundation is mathematically sound (Swarm Pattern), economically viable (Agentic Commerce Protocols), and technically robust (Hybrid DB).
 
 **Next Phase**: Task 2/3 - The Builder. We are ready to implement the ratified specs (`research/specs/`) into the `src/` directory.
+
+
+git repo : https://github.com/Gersum/TenX_Day2_Research.git
