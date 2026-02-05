@@ -3,6 +3,8 @@
 ## A) Developer Tools (MCP)
 Selected MCP servers for development:
 - filesystem (file editing)
+- git (version control)
+- github (repo operations)
 - sqlite (local data inspection)
 - puppeteer (web validation)
 - brave-search (research)

@@ -1,4 +1,4 @@
-# Project Chimera — Agent Rules
+# Project Chimera — Copilot Instructions (Mirrored)
 
 ## Project Context
 This is Project Chimera, an autonomous influencer system.
@@ -26,7 +26,7 @@ If there is any conflict, follow the highest‑priority spec and document the co
 - Read the relevant files in specs/ and research/specs/.
 - Confirm constraints (safety, HITL, MCP‑only actions, budget gating).
 - If unclear, ask a targeted question rather than guessing.
- - Identify the source of truth for each requirement.
+- Identify the source of truth for each requirement.
 
 ## Execution Workflow
 1. Summarize the task in 1–2 lines.

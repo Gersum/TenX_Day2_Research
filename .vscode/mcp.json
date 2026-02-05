@@ -27,6 +27,16 @@
 				"/Users/gersumasfaw/Projects/TenX_Day2_Research"
 			]
 		},
+		"github": {
+			"command": "npx",
+			"args": [
+				"-y",
+				"@modelcontextprotocol/server-github"
+			],
+			"env": {
+				"GITHUB_TOKEN": "${env:GITHUB_TOKEN}"
+			}
+		},
 		"memory": {
 			"command": "npx",
 			"args": [
