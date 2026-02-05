@@ -10,14 +10,16 @@
 				"mcp-server-sqlite",
 				"--db-path",
 				"./research/chimera.db"
-			]
+			],
+			"type": "stdio"
 		},
 		"puppeteer": {
 			"command": "npx",
 			"args": [
 				"-y",
 				"@modelcontextprotocol/server-puppeteer"
-			]
+			],
+			"type": "stdio"
 		},
 		"filesystem": {
 			"command": "npx",
@@ -25,24 +27,16 @@
 				"-y",
 				"@modelcontextprotocol/server-filesystem",
 				"/Users/gersumasfaw/Projects/TenX_Day2_Research"
-			]
-		},
-		"github": {
-			"command": "npx",
-			"args": [
-				"-y",
-				"@modelcontextprotocol/server-github"
 			],
-			"env": {
-				"GITHUB_TOKEN": "${env:GITHUB_TOKEN}"
-			}
+			"type": "stdio"
 		},
 		"memory": {
 			"command": "npx",
 			"args": [
 				"-y",
 				"@modelcontextprotocol/server-memory"
-			]
+			],
+			"type": "stdio"
 		},
 		"brave-search": {
 			"command": "npx",
@@ -52,8 +46,26 @@
 			],
 			"env": {
 				"BRAVE_API_KEY": "YOUR_API_KEY_HERE"
-			}
+			},
+			"type": "stdio"
+		},
+		"github": {
+			"command": "npx",
+			"args": [
+				"-y",
+				"@modelcontextprotocol/server-github@2025.4.8"
+			],
+			"env": {
+				"GITHUB_PERSONAL_ACCESS_TOKEN": "${input:github_token}"
+			},
+			"type": "stdio"
 		}
 	},
-	"inputs": []
+	"inputs": [
+		{
+			"id": "github_token",
+			"type": "promptString",
+			"description": "GitHub Personal Access Token"
+		}
+	]
 }
