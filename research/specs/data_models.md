@@ -26,8 +26,8 @@ CREATE TABLE agents (
 **Objective**: Sub-millisecond queuing and ephemeral interaction state.
 
 ### Keys
-- `queue:task`: List of JSON Strings (Task Objects).
-- `queue:review`: List of JSON Strings (Result Objects).
+- `queue:task`: List of JSON Strings (Task Objects; see `specs/canonical_schemas.md`).
+- `queue:review`: List of JSON Strings (Result Objects; see `specs/canonical_schemas.md`).
 - `agent:{id}:state`: Hash map of current context (last_seen, current_task).
 - `agent:{id}:episodic`: Short-term memory cache for immediate context.
 

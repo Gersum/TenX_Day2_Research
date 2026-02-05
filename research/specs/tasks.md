@@ -6,7 +6,7 @@
 - [ ] **1.3** Verify connection to Tenx MCP Sense for traceability.
 
 ## 2. Core Swarm Components (Logic Only)
-- [ ] **2.1** Implement Pydantic Schemas for `Task`, `Result`, and `Evaluation` (Ref: `core_interfaces.md`).
+- [ ] **2.1** Implement Pydantic Schemas for `Task`, `Result`, and `Evaluation` (Ref: `specs/canonical_schemas.md`).
 - [ ] **2.2** Create the `Planner` logic: Decompose a `Goal` string into `List[Task]` using the Genesis Prompt.
 - [ ] **2.3** Create a stateless `Worker` class capable of popping tasks from Redis and processing them.
 - [ ] **2.4** Create the `Judge` logic: Evaluate `Results` against the confidence threshold (0.7) and policy rules.

@@ -12,7 +12,7 @@ CONSTRAINTS:
 2. Define clear success criteria for each task.
 3. Identify dependencies (does Task B need Task A's output?).
 INPUT: User Goal (e.g., "Grow Twitter following to 10k")
-OUTPUT: JSON Task List (Scenario 1.1 Schema).
+OUTPUT: JSON Task List (see `specs/canonical_schemas.md`).
 ```
 
 ## 2. Worker Agent Prompt
@@ -24,8 +24,8 @@ BEHAVIOR:
 2. Select the appropriate tool from your MCP registry.
 3. If a tool fails, retry once, then report failure.
 4. Output strict JSON Result schema.
-INPUT: Task Object.
-OUTPUT: Result Object.
+INPUT: Task Object (see `specs/canonical_schemas.md`).
+OUTPUT: Result Object (see `specs/canonical_schemas.md`).
 ```
 
 ## 3. Judge Agent Prompt
@@ -40,5 +40,5 @@ SCORING:
 - > 0.9: Approve.
 - < 0.7: Reject or Escalate.
 INPUT: Task, Result.
-OUTPUT: Evaluation Object.
+OUTPUT: Evaluation Object (see `specs/canonical_schemas.md`).
 ```

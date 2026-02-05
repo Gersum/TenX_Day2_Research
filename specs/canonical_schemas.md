@@ -1,8 +1,13 @@
-# Technical Specification
+# Canonical Schemas (Source of Truth)
 
-## API Contracts (JSON)
-### Task
-Priority is an integer 1-5 inclusive.
+This document is the **single source of truth** for domain object schemas. Any other schema references must defer to this file.
+
+## Versioning
+- `schema_version` is required for all persisted payloads.
+- Backwards-compatible changes increment `minor`.
+- Breaking changes increment `major` and must be ratified in `research/specs/CONSTITUTION.md`.
+
+## 1. Task
 ```json
 {
   "schema_version": "1.0",
@@ -21,7 +26,7 @@ Priority is an integer 1-5 inclusive.
 }
 ```
 
-### Result
+## 2. Result
 ```json
 {
   "schema_version": "1.0",
@@ -38,7 +43,7 @@ Priority is an integer 1-5 inclusive.
 }
 ```
 
-### Evaluation
+## 3. Evaluation
 ```json
 {
   "schema_version": "1.0",
@@ -55,14 +60,7 @@ Priority is an integer 1-5 inclusive.
 }
 ```
 
-## Database Schema (ERD)
-### Entities
-- **agents**(id, tenant_id, name, wallet_address, status, created_at)
-- **users**(id, tenant_id, tier, api_keys)
-- **ledgers**(id, tenant_id, agent_id, amount, currency, tx_hash, timestamp)
-- **videos**(id, tenant_id, agent_id, platform, title, url, status, created_at)
-
-### Relationships
-- agents 1..* videos
-- agents 1..* ledgers
-- tenants 1..* agents/users/videos/ledgers
+## Notes
+- `priority` is an integer 1-5 inclusive.
+- `metadata` is the canonical key name (not `meta_data`).
+- `state_version` is an integer, used for optimistic concurrency control.
