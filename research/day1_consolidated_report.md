@@ -38,6 +38,17 @@ We identified three critical protocols required for safe non-human interaction:
 *   **Exchange Protocol**: Standardized MCP Resource schemas (`proposal/v1`, `review/v1`) to allow agents to "negotiate" collabs.
 *   **Reputation Logic**: Trust is established via on-chain history. A local Weaviate index of "Trusted Peers" is essential to filter out low-quality interactions from the broader OpenClaw network.
 
+#### 5. Project Chimera Strategic Pillars (SRS Deep Dive)
+*   **Core Definition**: Agents are defined as "**Sovereign Digital Entities**." They are not just chatbots; they possessed economic agency (wallets) and "Persona DNA."
+*   **Fractal Orchestration**: To prevent human cognitive overload, we adopt a **tiered management structure**:
+    *   **Super-Orchestrator** (Human): Sets high-level strategy.
+    *   **Manager Agents**: Direct specific campaigns.
+    *   **Worker Swarms**: Execute atomic tasks.
+*   **Business Model Evolution**: The architecture supports three phases:
+    1.  **Digital Talent Agency**: Operating our own stable of IP-owned influencers.
+    2.  **PaaS (Chimera OS)**: Licensing the infrastructure to brands.
+    3.  **Hybrid Ecosystem**: Managing flagship alpha agents while hosting third-party developers.
+
 ---
 
 ### Task 1.2: Domain Architecture Strategy
@@ -64,6 +75,11 @@ We identified three critical protocols required for safe non-human interaction:
     *   **0.7 - 0.9**: Asynchronous Review (User sees it in dashboard but action proceeds).
     *   **< 0.7**: **Blocker**. Task is flagged for manual "Orchestrator" approval logic.
     *   **Safety**: No content goes to public platforms (Twitter/YouTube) without passing the Judge's policy checks (embedded in Weaviate memory).
+
+#### 4. Governance & Identity Strategy
+*   **BoardKit Pattern**: A centralized "Constitution" repository defines ethical boundaries and brand voice. A single policy update in the BoardKit propagates instantly to all agents, ensuring alignment at scale.
+*   **Persona DNA (SOUL.md)**: Every agent's core identity—backstory, voice, beliefs—is immutable and defined in a standardized `SOUL.md` file. This prevents "Schema Drift" where agents lose character over time.
+*   **Judge's Absolute Authority**: The Judge agent is explicitly designed with **veto power**. It focuses solely on "Strategic & Ethical Alignment" rather than just execution quality.
 
 **3. Data Topology Strategy**
 *   **Decision**: **Hybrid SQL + NoSQL + Vector**.
