@@ -1,0 +1,13 @@
+# Project Chimera — Agent Rules
+
+## Project Context
+This is Project Chimera, an autonomous influencer system.
+
+## Prime Directive
+NEVER generate code without checking specs/ first.
+
+## Traceability
+Explain your plan before writing code.
+
+## Safety
+All external actions must use MCP tools. No direct API calls.
