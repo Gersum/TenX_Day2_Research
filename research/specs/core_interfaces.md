@@ -10,6 +10,7 @@ The atomic unit of work described by the Planner and executed by the Worker.
 ```json
 {
   "id": "uuid-v4",
+  "tenant_id": "uuid-v4",
   "goal_id": "uuid-v4",
   "type": "RESEARCH | CONTENT | REVIEW | ACTION",
   "description": "Natural language description of what needs to be done.",
@@ -28,13 +29,15 @@ The output produced by a Worker.
 ```json
 {
   "task_id": "uuid-v4",
+  "tenant_id": "uuid-v4",
   "worker_id": "agent-id",
   "content": "The actual output (text, image_url, json).",
   "artifacts": ["path/to/file1", "path/to/file2"],
   "meta_data": {
     "execution_time_ms": 120,
     "tool_calls": ["search_tool", "summarizer"]
-  }
+  },
+  "state_version": "int"
 }
 ```
 
@@ -43,10 +46,12 @@ The quality assessment of a Result.
 ```json
 {
   "task_id": "uuid-v4",
+  "tenant_id": "uuid-v4",
   "judge_id": "judge-agent-1",
   "confidence_score": 0.0-1.0,
   "verdict": "APPROVE | REJECT | ESCALATE",
   "feedback": "Specific instructions on why it failed or passed.",
+  "state_version": "int",
   "policy_checks": [
     {"rule": "No hate speech", "passed": true},
     {"rule": "On brand", "passed": true}

@@ -7,13 +7,14 @@ Definition of the Hybrid Data Architecture (SQL + NoSQL + Vector).
 **Objective**: Transactional consistency for core entities.
 
 ### Tables
-- `agents`: (id, name, wallet_address, config_json)
-- `users`: (id, tier, api_keys)
-- `ledgers`: (id, agent_id, amount, currency, tx_hash, timestamp)
+- `agents`: (id, tenant_id, name, wallet_address, config_json)
+- `users`: (id, tenant_id, tier, api_keys)
+- `ledgers`: (id, tenant_id, agent_id, amount, currency, tx_hash, timestamp)
 
 ```sql
 CREATE TABLE agents (
     id UUID PRIMARY KEY,
+  tenant_id UUID NOT NULL,
     name VARCHAR(255),
     wallet_address VARCHAR(42),
     status VARCHAR(50),
@@ -28,6 +29,7 @@ CREATE TABLE agents (
 - `queue:task`: List of JSON Strings (Task Objects).
 - `queue:review`: List of JSON Strings (Result Objects).
 - `agent:{id}:state`: Hash map of current context (last_seen, current_task).
+- `agent:{id}:episodic`: Short-term memory cache for immediate context.
 
 ## 3. Weaviate Schema (Semantic Memory)
 **Objective**: RAG for persona and research.

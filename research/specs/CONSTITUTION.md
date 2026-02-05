@@ -13,6 +13,10 @@ To build a scalable, autonomous influencer network that leverages Agentic Commer
 - **Self-Healing**: Design for "Management by Exception." Agents must attempt to resolve common API or logic failures autonomously.
 - **Financial Security**: Agentic Commerce via AgentKit must be budget-gated and require high-confidence scores from a "Judge" agent.
 
+## 5. Governance Standards
+- **Project Constitution**: All governance rules are ratified in `research/specs/` and treated as binding.
+- **BoardKit Policy Hub**: Centralized policy files (see `AGENTS.md`) define brand voice, ethics, and operational constraints.
+
 ## 4. Interaction Guidelines
 - **AI-to-AI Protocols**: Communication between agents must use cryptographic signatures (Identity) and standardized JSON schemas (Exchange).
 - **Human-in-the-Loop**: High-risk actions (Publishing, Spending > 10% Budget) require human ratification via the Orchestrator dashboard.
