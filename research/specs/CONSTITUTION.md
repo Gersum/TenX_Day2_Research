@@ -1,22 +1,66 @@
-# Chimera Project Constitution
+<!--
+SYNC IMPACT REPORT
+Version: 0.0.0 -> 1.0.0
+Change Type: MAJOR (Initial Ratification of Spec Kit Format)
 
-## 1. Core Mission
+Modified Principles:
+- Reorganized 'Development Principles' into Article I & II
+- Reorganized 'Engineering Standards' into Article III, IV, & V
+- Reorganized 'Interaction Guidelines' into Article VI & VII
+- Reorganized 'Governance Standards' into Article VIII
+
+Added Sections:
+- Governance (Amendment Process, Versioning)
+- Metadata Header
+
+Pending/TODOs:
+- None
+-->
+
+# Project Chimera Constitution
+
+**Version**: 1.0.0
+**Ratification Date**: 2026-02-06
+**Last Amended Date**: 2026-02-06
+
+## Preamble
 To build a scalable, autonomous influencer network that leverages Agentic Commerce and Swarm Orchestration to disrupt the traditional digital talent agency model.
 
-## 2. Development Principles (SDD)
-- **Spec First**: No implementation code until the interface and logic are ratified in the `research/specs/` directory.
-- **Traceability**: Every significant design decision must be recorded in the `session_log.md`.
-- **Git Hygiene**: Commits must serve as a narrative of evolving complexity.
+## Article I: Spec-Driven Development (SDD)
+No implementation code shall be written until the interface, logic, and architecture are ratified in the `specs/` directory. The specification is the source of truth; code is a derived artifact.
 
-## 3. Engineering Standards
-- **Component Isolation**: Use the Hub-and-Spoke model with MCP to ensure that core reasoning (Agents) is decoupled from external tools (MCP Servers).
-- **Self-Healing**: Design for "Management by Exception." Agents must attempt to resolve common API or logic failures autonomously.
-- **Financial Security**: Agentic Commerce via AgentKit must be budget-gated and require high-confidence scores from a "Judge" agent.
+## Article II: Traceability & Hygiene
+All significant design considerations must be documented in `research/session_log.md`. Git commits must serve as a legible narrative of evolving complexity, not just a save point.
 
-## 5. Governance Standards
-- **Project Constitution**: All governance rules are ratified in `research/specs/` and treated as binding.
-- **BoardKit Policy Hub**: Centralized policy files (see `AGENTS.md`) define brand voice, ethics, and operational constraints.
+## Article III: Component Isolation (Hub-and-Spoke)
+The system MUST use the Hub-and-Spoke model with MCP. Core reasoning (Agents) MUST be decoupled from external tools (MCP Servers) to ensure portability and security.
 
-## 4. Interaction Guidelines
-- **AI-to-AI Protocols**: Communication between agents must use cryptographic signatures (Identity) and standardized JSON schemas (Exchange).
-- **Human-in-the-Loop**: High-risk actions (Publishing, Spending > 10% Budget) require human ratification via the Orchestrator dashboard.
+## Article IV: Self-Healing Systems
+Design for "Management by Exception." Agents must attempt to resolve common API or logic failures autonomously before escalating to human operators.
+
+## Article V: Financial Security & Budget Gating
+Agentic Commerce (AgentKit) MUST be budget-gated. Any transaction requires a high-confidence score from a "Judge" agent and strict adherence to the `BudgetGuard` logic.
+
+## Article VI: Protocol-First Interaction
+Communication between agents MUST use cryptographic signatures for identity and standardized JSON schemas for information exchange. No unstructured chatter between system components.
+
+## Article VII: Human-in-the-Loop (HITL)
+High-risk actions, specifically Publishing content and Spending > 10% of the daily budget, REQUIRE human ratification via the Orchestrator dashboard.
+
+## Article VIII: Operational Compliance
+All governance rules ratified in `research/specs/` are binding. The BoardKit Policy Hub (`AGENTS.md`) serves as the definitive source for brand voice, ethics, and operational constraints.
+
+## Governance
+
+### Amendment Process
+1. **Proposal**: Create a PR with a `docs: amend constitution` commit.
+2. **Review**: Requires approval from the Lead Architect (User) and the CFO Judge (Simulator).
+3. **Ratification**: Merge to main increments the version number.
+
+### Versioning Policy
+- **MAJOR**: Backward incompatible governance/principle removals or redefinitions.
+- **MINOR**: New principle/section added or materially expanded guidance.
+- **PATCH**: Clarifications, wording, typo fixes.
+
+### Compliance
+All architectural decisions and code reviews MUST reference specific Articles of this Constitution to justify choices.

@@ -1,0 +1,36 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Result",
+  "description": "Output artifact from a Worker execution",
+  "type": "object",
+  "properties": {
+    "task_id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "worker_id": {
+      "type": "string",
+      "description": "ID of the agent that produced this result"
+    },
+    "content": {
+      "type": "string",
+      "description": "Primary text output"
+    },
+    "artifacts": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "List of file paths or URIs generated"
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": ["task_id", "worker_id", "content"]
+}

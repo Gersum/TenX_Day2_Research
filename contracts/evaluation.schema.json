@@ -1,0 +1,32 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Evaluation",
+  "description": "Quality and policy check result from a Judge",
+  "type": "object",
+  "properties": {
+    "task_id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "judge_id": {
+      "type": "string"
+    },
+    "verdict": {
+      "type": "string",
+      "enum": ["APPROVE", "REJECT", "ESCALATE"]
+    },
+    "confidence_score": {
+      "type": "number",
+      "minimum": 0.0,
+      "maximum": 1.0
+    },
+    "reasoning": {
+      "type": "string"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": ["task_id", "judge_id", "verdict", "confidence_score"]
+}

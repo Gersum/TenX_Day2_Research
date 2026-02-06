@@ -1,44 +1,48 @@
-# Plan: Project Chimera Core System
+# Implementation Plan: Project Chimera Core System
 
-## Objective
-Translate the Chimera core specification into an actionable, test-first implementation roadmap.
+## 1. Executive Summary
+This plan details the implementation of the Chimera Core System (Feature 001), adhering to the **Spec-Driven Development (SDD)** and **Library-First** principles ratified in the Constitution v1.0.0.
 
-## Scope
-- In scope:
-  - Core agent roles and governance workflows.
-  - MCP-only tool routing and auditability constraints.
-  - Baseline data models and contracts for tasks/results/evaluations.
-- Out of scope:
-  - Full production deployment.
-  - Advanced analytics dashboards.
+## 2. Architecture & Technology (Article III)
+- **Language**: Python 3.11+ (Enforced via `pyproject.toml`)
+- **Structure**: Modular Library (`src/chimera_core`)
+- **Dependency Isolation**: Hub-and-Spoke pattern.
+  - **Spokes**: MCP Clients (Tools)
+  - **Hub**: `ChimeraContext` (State management)
+- **State Store**: Redis (Task Queue), PostgreSQL (Ledger - *future*), Weaviate (Memory - *future*).
 
-## Architecture & Technology
-- **Language**: Python 3.11+
-- **Data Models**: Pydantic v2 (See `data-model.md`)
-- **Isolation**: Tenant-scoped Middleware
-- **Governance**: Two-stage (Auto + HITL)
-- **External Interfaces**: MCP Client Protocol (See `research.md`)
+## 3. Data Integrity Strategy (Article VI)
+- **Protocols**: All Agent-to-Agent communication MUST use strict Pydantic v2 models.
+- **Contracts**: JSON Schemas in `contracts/` serve as the language-agnostic interface.
+- **Validation**: `TenantContext` middleware ensures data isolation at the entry point.
 
-## Constitution Assessment
-- **Library-First**: Plan builds `src/chimera_core` first.
-- **Test-First**: Task list explicitly mandates failing tests before implementation.
-- **Simplicity**: No complex microservices yet; modular library structure.
+## 4. Work Breakdown (Phased)
 
-## Milestones
-1. **Models & Contracts**: Validate `contracts/` with Pydantic models (Test Cycle 1).
-2. **Core Logic**: Implement `TenantContext` and `BudgetGuard` (Test Cycle 2).
-3. **Agent Interfaces**: Implement abstract base classes and logic mocks (Test Cycle 3).
+### Phase 1: Infrastructure & Contracts (Current)
+- [x] Initialize Project Structure (`src/chimera_core`)
+- [ ] Define JSON Contracts (`contracts/task.schema.json`)
+- [ ] Implement Skeleton Pydantic Models
 
+### Phase 2: Security Kernel (Blocking)
+- [ ] Implement `TenantContext` Middleware (Header: `X-Tenant-ID`)
+- [ ] Verify Isolation via Tests
 
-## Dependencies
-- specs/_meta.md, specs/functional.md, specs/technical.md
-- research/specs/governance_alignment.md
-- research/specs/orchestration.md
+### Phase 3: Core Agents (US1, US2)
+- [ ] `PlannerAgent`: Decomposition Logic
+- [ ] `WorkerAgent`: MCP Tool Bridge
 
-## Risks
-- Governance requirements may expand beyond current scope.
-- MCP tool availability and permissions may delay execution.
+### Phase 4: Governance (US3, US4) (Article V, VII)
+- [ ] `JudgeAgent`: Policy Evaluation
+- [ ] `BudgetGuard`: Spend Authorization
 
-## Validation
-- Tests derived from contracts pass in CI.
-- Spec-check script reports no missing required spec artifacts.
+## 5. Technical Decisions & Trade-offs
+- **Tenant ID**: We will use `X-Tenant-ID` HTTP header for context propagation (Option A from Clarification).
+- **Orchestrator**: Simple CLI for MVP, evolving to API later.
+
+## 6. Risks & Mitigation
+- **Risk**: MCP Tool Latency. **Mitigation**: AsyncIO + Timeout Retries.
+- **Risk**: Governance Bottleneck. **Mitigation**: Optimistic approval for low-risk (<$1) actions.
+
+## 7. Verification
+- **TDD**: Tests MUST fail before implementation is written.
+- **Coverage**: 100% Line Coverage on `security.py` and `governance.py`.

@@ -1,0 +1,35 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Task",
+  "description": "Atomic unit of work for Chimera Agents",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "tenant_id": {
+      "type": "string",
+      "description": "Isolation identifier for the tenant"
+    },
+    "type": {
+      "type": "string",
+      "enum": ["research", "draft", "review", "publish"]
+    },
+    "payload": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "status": {
+      "type": "string",
+      "enum": ["pending", "running", "completed", "failed"],
+      "default": "pending"
+    },
+    "priority": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 5
+    }
+  },
+  "required": ["id", "tenant_id", "type", "payload"]
+}

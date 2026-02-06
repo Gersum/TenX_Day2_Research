@@ -2,6 +2,9 @@
 
 Research and Specification repository for Project Chimera (Day 2 Sprint).
 
+## 🚨 Implementation Guide
+**[READ THIS FIRST: IMPLEMENTATION_GUIDE.md](docs/IMPLEMENTATION_GUIDE.md)** - Protocol for Agents/Developers implementing the core system.
+
 ## Documentation
 
 - [**Architecture Visualization**](docs/architecture_diagram.md) - High-level system topology and swarm patterns.
