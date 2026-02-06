@@ -1,0 +1,15 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Task",
+  "type": "object",
+  "required": ["id", "tenant_id", "type", "description", "status"],
+  "properties": {
+    "id": { "type": "string", "format": "uuid" },
+    "tenant_id": { "type": "string", "format": "uuid" },
+    "type": { "type": "string", "enum": ["RESEARCH", "CONTENT", "REVIEW", "ACTION"] },
+    "description": { "type": "string" },
+    "status": { "type": "string", "enum": ["PENDING", "ASSIGNED", "COMPLETED", "FAILED"] },
+    "priority": { "type": "integer", "minimum": 1, "maximum": 5 },
+    "context": { "type": "object" }
+  }
+}

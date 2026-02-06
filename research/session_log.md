@@ -32,6 +32,13 @@
 - **MCP Enhancement**: Added `sqlite`, `puppeteer`, `filesystem`, `memory`, and `brave-search` to `.vscode/mcp.json` to provide agents with necessary tools for the "Builder" phase.
 - **Next Step**: Day 1 wrap-up. Start Day 2: The Builder (Implementation).
 
+### 4. Spec Kit Structure Alignment (16:30 - 16:45)
+- **Action**: Added a Spec Kit feature directory structure under `specs/001-project-chimera/` with `spec.md`, `plan.md`, and `tasks.md` to mirror `/speckit.specify`, `/speckit.plan`, and `/speckit.tasks` outputs.
+- **Action**: Added root `AGENTS.md` to align with Spec Kit repository conventions, linking to authoritative agent definitions in `research/specs/AGENTS.md`.
+- **Rationale**: Bring repository structure into compliance with Spec Kit workflows while preserving existing Chimera specifications as the source of truth.
+
+- **Next Step**: Day 1 wrap-up. Start Day 2: The Builder (Implementation).
+
 ---
 
 ## Troubleshooting Techniques Summary
